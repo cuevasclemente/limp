@@ -27,10 +27,10 @@ fun! LimpMode_start()
     "-------------------------------------------------------------------
     let g:lisp_rainbow=1
 
-    set t_Co=256
-    if !exists("g:colors_name")
-        colorscheme desert256
-    endif
+    "set t_Co=256
+    "if !exists("g:colors_name")
+        "colorscheme desert256
+    "endif
 
     hi Brackets      ctermbg=53 ctermfg=white 
     hi BracketsBlock ctermbg=235 guibg=lightgray
@@ -55,7 +55,7 @@ fun! LimpMode_start()
     hi hlLevel10 ctermfg=238
     hi hlLevel11 ctermfg=238
 
-    call LimpHighlight_start()
+    "call LimpHighlight_start()
     call AutoClose_start()
 
     " for whatever reason, nocursorline isn't set after pressing F12... (i.e.,
@@ -82,12 +82,24 @@ augroup END
 syntax on
 setlocal nocompatible nocursorline
 setlocal lisp syntax=lisp
-setlocal ls=2 bs=2 si et sw=2 ts=2 tw=0 
+setlocal ls=2 bs=2 si et sw=2 ts=2 tw=80 
 setlocal statusline=%<%f\ \(%{LimpBridge_connection_status()}\)\ %h%m%r%=%-14.(%l,%c%V%)\ %P\ of\ %L\ \(%.45{getcwd()}\)
-setlocal iskeyword=&,*,+,45,/,48-57,:,<,=,>,@,A-Z,a-z,_
-setlocal cpoptions=-mp
-setlocal foldmethod=marker foldmarker=(,) foldminlines=1
+"setlocal iskeyword=&,*,+,45,/,48-57,:,<,=,>,@,A-Z,a-z,_
+"setlocal cpoptions=-mp
+"setlocal foldmethod=marker foldmarker=(,) foldminlines=1
+setlocal foldcolumn=0
+set lispwords+=defgeneric,block,catch,with-gensyms
 
+"-----------
+""Taken from the bundled lisp.vim file in VIM
+"(/usr/share/vim/vim72/ftplugin/lisp.vim)
+setl comments=:;
+setl define=^\\s*(def\\k*
+setl formatoptions-=t
+setl iskeyword+=+,-,\*,/,%,<,=,>,:,$,?,!,@-@,94
+setl comments^=:;;;,:;;,sr:#\|,mb:\|,ex:\|#
+setl formatoptions+=croql
+""-----------
 
 " This allows gf and :find to work. Fix path to your needs
 setlocal suffixesadd=.lisp,cl path=/home/mikael/hacking/lisp/**

@@ -51,47 +51,47 @@ endif
 
 " assume everything has been defined already if one of the functions are
 " defined.
-if exists("*AutoClose_start")
-    finish
-endif
+"if exists("*AutoClose_start")
+    "finish
+"endif
 
-if !exists("*AutoClose_stop")
-fun! AutoClose_stop()
-    if g:autoclose_on
-        iunmap "
-        iunmap (
-        iunmap )
-        iunmap [
-        iunmap ]
-        iunmap {
-        iunmap }
-        iunmap <BS>
-        iunmap <C-h>
-        iunmap <Esc>
-        ""iunmap <C-[>
-        let g:autoclose_on = 0
-    endif
-endfun
-endif
+"if !exists("*AutoClose_stop")
+"fun! AutoClose_stop()
+    "if g:autoclose_on
+        "iunmap "
+        "iunmap (
+        "iunmap )
+        "iunmap [
+        "iunmap ]
+        "iunmap {
+        "iunmap }
+        "iunmap <BS>
+        "iunmap <C-h>
+        "iunmap <Esc>
+        """iunmap <C-[>
+        "let g:autoclose_on = 0
+    "endif
+"endfun
+"endif
 
-if !exists("*AutoClose_start")
-fun! AutoClose_start()
-    if !g:autoclose_on
-        inoremap <silent> " <C-R>=<SID>QuoteDelim('"')<CR>
-        inoremap <silent> ( (<C-R>=<SID>CloseStackPush(')')<CR>
-        inoremap <silent> ) <C-R>=<SID>CloseStackPop(')')<CR>
-        inoremap <silent> [ [<C-R>=<SID>CloseStackPush(']')<CR>
-        inoremap <silent> ] <C-R>=<SID>CloseStackPop(']')<CR>
-        inoremap <silent> { <C-R>=<SID>OpenSpecial('{','}')<CR>
-        inoremap <silent> } <C-R>=<SID>CloseStackPop('}')<CR>
-        inoremap <silent> <BS> <C-R>=<SID>OpenCloseBackspace()<CR>
-        inoremap <silent> <C-h> <C-R>=<SID>OpenCloseBackspace()<CR>
-        inoremap <silent> <Esc> <C-R>=<SID>CloseStackPop('')<CR><Esc>
-        inoremap <silent> <C-[> <C-R>=<SID>CloseStackPop('')<CR><C-[>
-        let g:autoclose_on = 1
-    endif
-endfunction
-endif
+"if !exists("*AutoClose_start")
+"fun! AutoClose_start()
+    "if !g:autoclose_on
+        "inoremap <silent> " <C-R>=<SID>QuoteDelim('"')<CR>
+        "inoremap <silent> ( (<C-R>=<SID>CloseStackPush(')')<CR>
+        "inoremap <silent> ) <C-R>=<SID>CloseStackPop(')')<CR>
+        "inoremap <silent> [ [<C-R>=<SID>CloseStackPush(']')<CR>
+        "inoremap <silent> ] <C-R>=<SID>CloseStackPop(']')<CR>
+        "inoremap <silent> { <C-R>=<SID>OpenSpecial('{','}')<CR>
+        "inoremap <silent> } <C-R>=<SID>CloseStackPop('}')<CR>
+        "inoremap <silent> <BS> <C-R>=<SID>OpenCloseBackspace()<CR>
+        "inoremap <silent> <C-h> <C-R>=<SID>OpenCloseBackspace()<CR>
+        "inoremap <silent> <Esc> <C-R>=<SID>CloseStackPop('')<CR><Esc>
+        "inoremap <silent> <C-[> <C-R>=<SID>CloseStackPop('')<CR><C-[>
+        "let g:autoclose_on = 1
+    "endif
+"endfunction
+"endif
 let s:closeStack = []
 
 " AutoClose Utilities -----------------------------------------{{{1

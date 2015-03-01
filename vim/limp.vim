@@ -43,10 +43,10 @@ silent! runtime plugin/matchit.vim
 "-------------------------------------------------------------------
 
 runtime ftplugin/lisp/limp/cursor.vim
-runtime ftplugin/lisp/limp/highlight.vim
+"runtime ftplugin/lisp/limp/highlight.vim
 runtime ftplugin/lisp/limp/sexp.vim
 runtime ftplugin/lisp/limp/bridge.vim
-runtime ftplugin/lisp/limp/autoclose.vim
+"runtime ftplugin/lisp/limp/autoclose.vim
 runtime ftplugin/lisp/limp/keys.vim
 runtime ftplugin/lisp/limp/mode.vim
 
